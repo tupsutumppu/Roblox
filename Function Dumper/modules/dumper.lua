@@ -114,7 +114,7 @@ function dumper.function_dump(scr)
                     protoStr ..= `\n\tproto[{key}] = function {(info.name or "__UNNAMED PROTO__")}({(info.is_vararg ~= 1 and get_args(info.numparams)) or "..."})\n\n`;
                     
                     for f, h in constants do
-                        protoStr ..= `\tconstant[{f}] = {h}\n`;
+                        protoStr ..= `\t\tconstant[{f}] = {h}\n`;
                     end
 
                     protoStr ..= "\n\tend";

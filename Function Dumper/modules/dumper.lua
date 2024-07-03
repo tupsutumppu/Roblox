@@ -30,7 +30,7 @@ function dumper.function_dump(scr)
         local argStr = "";
 
         for arg = 1, numparams do
-            argStr ..= (arg ~= numparams and `a_{arg}, `) or `a_{arg}`;
+            argStr ..= (arg ~= numparams and `a{arg}, `) or `a{arg}`;
         end
 
         return argStr;

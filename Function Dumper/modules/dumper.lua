@@ -51,7 +51,7 @@ function dumper.function_dump(scr)
         if typeof(value) == "function" and islclosure(value) then
             local info = debug.getinfo(value);
 
-            if string.find(info.short_src, scr:GetFullName()) and rawget(getfenv(v), "script") == scr then
+            if string.find(info.short_src, scr:GetFullName()) and rawget(getfenv(value), "script") == scr then
                 functions[value] = {
                     info = info;
                     upvalues = debug.getupvalues(value);

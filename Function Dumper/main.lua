@@ -4,7 +4,7 @@ local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/EjRqoN
 
 local scripts = getscripts();
 local scriptCache = table.clone(scripts);
-local dumpCache = {scr = nil; dumpStr = {}};
+local dump = {scr = nil; str = {}};
 local openWindow = nil;
 
 local function render_dumper_window()
@@ -14,13 +14,13 @@ local function render_dumper_window()
             Iris.Separator();
 
             if Iris.Button({"save to file"}).clicked then
-                task.defer(dumper.save_to_file, dumpCache.dumpStr, dumpCache.scr);
+                task.defer(dumper.save_to_file, dump.str, dump.scr);
             end
         end
         Iris.End();
         Iris.Separator();
 
-        for _, str in pairs(dumpCache.dumpStr) do
+        for _, str in pairs(dump.str) do
             Iris.Text({str});
             Iris.Separator();
         end
@@ -51,17 +51,17 @@ Iris:Connect(function()
         Iris.Separator();
 
         for _, scr in pairs(scriptCache) do
-
             Iris.Tree({tostring(scr)}) do
                 Iris.SameLine() do
                     if Iris.Button({"open"}).clicked then
                         openWindow = scr;
 
-                        if dumpCache.scr ~= scr then
-                            dumpCache.scr = scr;
-                            dumpCache.dumpStr = dumper.function_dump(scr);
+                        if dump.scr ~= scr then
+                            dump.scr = scr;
+                            dump.str = dumper.function_dump(scr);
                         end
                     end
+
                     if Iris.Button({"close"}).clicked then
                         openWindow = nil;
                     end

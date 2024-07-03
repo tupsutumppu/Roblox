@@ -73,7 +73,7 @@ function dumper.function_dump(scr)
                 for key, value in pairs(func.upvalues) do
                     if typeof(value) == "function" then
                         local info = debug.getinfo(value);
-                        upvalueStr ..= `upvalue[{key}] = function {(info.name or "__UNNAMED PROTO_")}({(info.is_vararg ~= 1 and get_args(info.numparams)) or "..."})\n`;
+                        upvalueStr ..= `upvalue[{key}] = function {(info.name or "__UNNAMED PROTO__")}({(info.is_vararg ~= 1 and get_args(info.numparams)) or "..."})\n`;
 
                     elseif typeof(value) == "table" then
                         upvalueStr ..= `upvalue[{key}] = {repr1_2(value, reprSettings)}\n`;
@@ -110,7 +110,7 @@ function dumper.function_dump(scr)
 
                 for key, value in pairs(func.protos) do
                     local info = debug.getinfo(value);
-                    protoStr ..= `\n\tproto[{key}] = function {(info.name or "__UNNAMED PROTO_")}({(info.is_vararg ~= 1 and get_args(info.numparams)) or "..."})`;
+                    protoStr ..= `\n\tproto[{key}] = function {(info.name or "__UNNAMED PROTO__")}({(info.is_vararg ~= 1 and get_args(info.numparams)) or "..."})`;
                     protoStr ..= `\n\t\twhat = {info.what}`;
                     protoStr ..= "\n\tend";
                 end

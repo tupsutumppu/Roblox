@@ -51,15 +51,13 @@ function dumper.function_dump(scr)
         if typeof(value) == "function" and islclosure(value) then
             local info = debug.getinfo(value);
 
-            if string.find(info.short_src, scr:GetFullName()) then
-
+            if string.find(info.short_src, scr:GetFullName()) and rawget(getfenv(v), "script") == scr then
                 functions[value] = {
                     info = info;
                     upvalues = debug.getupvalues(value);
                     constants = debug.getconstants(value);
                     protos = debug.getprotos(value, true);
-                }
-
+                };
             end
         end
     end
@@ -84,7 +82,6 @@ function dumper.function_dump(scr)
                         upvalueStr ..= `upvalue[{key}] = {value}\n`;
                     end
                 end
-
             end
 
             tempDump ..= upvalueStr;
@@ -101,7 +98,6 @@ function dumper.function_dump(scr)
                 for key, value in pairs(func.constants) do
                     constantStr ..= `\tconstant[{key}] = {value}\n`;
                 end
-
             end
 
             tempDump ..= constantStr;

@@ -12,16 +12,6 @@ local reprSettings = {
 	sortKeys = false;
 }
 
-function dumper.save_to_file(parts, scr)
-    local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name;
-    local folder = (isfolder(gameName) and gameName) or makefolder(gameName);
-    local fileName = `{folder}/{tostring(scr)}_{math.floor(math.random(1, 999))}.txt`; -- boohoo
-
-    for _, part in parts do
-        appendfile(fileName, part .. "\n-----------------------------------------\n");
-    end
-end
-
 function dumper.function_dump(scr)
     local functions = {};
     local dump = {};
@@ -125,7 +115,8 @@ function dumper.function_dump(scr)
         end
 
         tempDump ..= "\nend\n";
-        table.insert(dump, tempDump);
+        local name = debug.getinfo(func).name;
+        dump[(name ~= "" and name) or "__UNNAMED__"] = tempDump;
     end
 
     return dump;

@@ -4,25 +4,16 @@ local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/EjRqoN
 
 local scripts = getscripts();
 local scriptCache = table.clone(scripts);
-local dump = {scr = nil; str = {}};
+local dump = {scr = nil; strs = {}};
 local openWindow = nil;
 
 local function render_dumper_window()
     Iris.Window({tostring(openWindow), [Iris.Args.Window.NoClose] = true}, {size = Iris.State(Vector2.new(1000, 800))}) do
-        Iris.SameLine() do
-            Iris.Text({"dumped by #tupsutumppu"});
-            Iris.Separator();
-
-            if Iris.Button({"save to file"}).clicked then
-                task.defer(dumper.save_to_file, dump.str, dump.scr);
+        for name, str in dump.strs do
+            Iris.CollapsingHeader({name}) do
+                Iris.Text({str});
             end
-        end
-        Iris.End();
-        Iris.Separator();
-
-        for _, str in pairs(dump.str) do
-            Iris.Text({str});
-            Iris.Separator();
+            Iris.End();
         end
     end
     Iris.End();
@@ -38,8 +29,8 @@ Iris:Connect(function()
             if Iris.Button({"Search!"}).clicked then
                 scriptCache = {};
 
-                for _, value in pairs(scripts) do
-                    local scriptName = tostring(value);
+                for _, value in scripts do
+                    local scriptName = value.Name;
 
                     if string.find(string.lower(scriptName), string.lower(search)) then
                         table.insert(scriptCache, value);
@@ -50,7 +41,7 @@ Iris:Connect(function()
         Iris.End();
         Iris.Separator();
 
-        for _, scr in pairs(scriptCache) do
+        for _, scr in scriptCache do
             Iris.Tree({tostring(scr)}) do
                 Iris.SameLine() do
                     if Iris.Button({"open"}).clicked then

@@ -49,8 +49,9 @@ end;
 local oldNamecall;
 oldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
     local method = getnamecallmethod();
+    local self = ...;
 
-    if not checkcaller() and method == "FindPartOnRay" and select(-1, ...) == localPlayer.Character then
+    if not checkcaller() and typeof(self) == "Instance" and method == "FindPartOnRay" and select(-1, ...) == localPlayer.Character then
         local ray = debug.getstack(3, 9);
         local closestHeadPos = getClosestHeadPos();
 

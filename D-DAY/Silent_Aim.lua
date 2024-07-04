@@ -9,12 +9,6 @@ local worldToViewportPoint = clonefunction(camera.WorldToViewportPoint);
 local getPlayers = clonefunction(PLAYERS.GetPlayers);
 local findFirstChild = clonefunction(game.FindFirstChild);
 
---[[
-    I don't know what is wrong with Wave's hookmetamethod, but it seems to completely mess up __namecall.
-    Every time I use __namecall within the hook or in the 'getClosestHeadPos', it causes an error like: "GetPlayers is not a valid member of Workspace 'Workspace'"
-    or "WorldToViewportPoint is not a valid member of Workspace 'Workspace'", even though I clearly called the methods on valid services and instances.
-]]
-
 local function getClosestHeadPos()
     local closest;
     local maxDist = math.huge;

@@ -2,7 +2,7 @@ local PLAYERS = game:GetService "Players";
 
 local camera = workspace.CurrentCamera;
 local localPlayer = PLAYERS.LocalPlayer;
-local fovRadius = 100;
+local fovRadius = 80;
 
 local worldToViewportPoint = clonefunction(camera.WorldToViewportPoint);
 local getPlayers = clonefunction(PLAYERS.GetPlayers);

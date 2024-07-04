@@ -1,4 +1,4 @@
-// D-DAY Silent aim | Discord: #tupsutumppu | v3rm: https://v3rm.net/members/tupsu.4716/
+-- // D-DAY Silent aim | Discord: #tupsutumppu | v3rm: https://v3rm.net/members/tupsu.4716/
 local PLAYERS = game:GetService "Players";
 
 local camera = workspace.CurrentCamera;

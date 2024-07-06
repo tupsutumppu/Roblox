@@ -48,19 +48,13 @@ function dumper.function_dump(scr)
     end
 
     for _, value in pairs(getgc()) do
-        if typeof(value) == "function" and islclosure(value) then
-            local info = debug.getinfo(value);
-
-            if string.find(info.short_src, scr:GetFullName()) then
-
-                functions[value] = {
-                    info = info;
-                    upvalues = debug.getupvalues(value);
-                    constants = debug.getconstants(value);
-                    protos = debug.getprotos(value, true);
-                }
-
-            end
+        if typeof(value) == "function" and islclosure(value) and rawget(getfenv(v), "script") == scr then
+            functions[value] = {
+                info = debug.getinfo(value);
+                upvalues = debug.getupvalues(value);
+                constants = debug.getconstants(value);
+                protos = debug.getprotos(value, true);
+            }
         end
     end
 

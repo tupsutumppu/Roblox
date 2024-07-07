@@ -1,5 +1,5 @@
 local dumper = {};
-local repr1_2 = loadstring(game:HttpGet("https://raw.githubusercontent.com/EjRqoN/Roblox/main/Function%20Dumper/modules/repr1_2.lua"))();
+local repr1_2 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tumppi66/Roblox/main/Function%20Dumper/modules/repr1_2.lua"))();
 
 local reprSettings = {
 	pretty = true;
@@ -48,13 +48,19 @@ function dumper.function_dump(scr)
     end
 
     for _, value in pairs(getgc()) do
-        if typeof(value) == "function" and islclosure(value) and rawget(getfenv(v), "script") == scr then
-            functions[value] = {
-                info = debug.getinfo(value);
-                upvalues = debug.getupvalues(value);
-                constants = debug.getconstants(value);
-                protos = debug.getprotos(value, true);
-            }
+        if typeof(value) == "function" and islclosure(value) then
+            local info = debug.getinfo(value);
+
+            if string.find(info.short_src, scr:GetFullName()) then
+
+                functions[value] = {
+                    info = info;
+                    upvalues = debug.getupvalues(value);
+                    constants = debug.getconstants(value);
+                    protos = debug.getprotos(value, true);
+                }
+
+            end
         end
     end
 

@@ -1,5 +1,5 @@
 local dumper = {};
-local repr1_2 = loadstring(game:HttpGet("https://raw.githubusercontent.com/EjRqoN/Roblox/main/Function%20Dumper/modules/repr1_2.lua"))();
+local repr1_2 = loadstring(game:HttpGet("https://raw.githubusercontent.com/tupsutumppu/Roblox/main/Function%20Dumper/modules/repr1_2.lua"))();
 
 local reprSettings = {
 	pretty = true;

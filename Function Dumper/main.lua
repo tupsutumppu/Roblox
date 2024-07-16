@@ -1,6 +1,6 @@
 local hui = gethui and gethui() or cloneref and cloneref(game:GetService("CoreGui"));
 local Iris = loadstring(game:HttpGet("https://raw.githubusercontent.com/x0581/Iris-Exploit-Bundle/main/bundle.lua"))().Init(hui);
-local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/EjRqoN/Roblox/main/Function%20Dumper/modules/dumper.lua"))();
+local dumper = loadstring(game:HttpGet("https://raw.githubusercontent.com/tupsutumppu/Roblox/main/Function%20Dumper/modules/dumper.lua"))();
 
 local scripts = getscripts();
 local scriptCache = table.clone(scripts);

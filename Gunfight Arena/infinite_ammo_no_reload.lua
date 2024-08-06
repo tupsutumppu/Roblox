@@ -3,7 +3,6 @@ local PLAYERS = cloneref(game:GetService"Players");
 local localPlayer = PLAYERS.LocalPlayer;
 local playerScripts = localPlayer.PlayerScripts
 local vortex = playerScripts:WaitForChild"Vortex";
-local camera = workspace.CurrentCamera;
 
 vortex:GetPropertyChangedSignal("Disabled"):Connect(function()
     local senv = getsenv(vortex);

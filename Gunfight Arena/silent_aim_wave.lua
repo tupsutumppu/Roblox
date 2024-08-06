@@ -18,7 +18,7 @@ setmetatable(debug.getupvalue(tracerCalc, 1), {
             rawset(value, "start", CFrame.lookAt(rawget(value, "start").Position, closestHead.CFrame.Position));
         end
         return rawset(self, index, value);
-    end;
+    end
 });
 
 -- // Not the best loop but idgaf

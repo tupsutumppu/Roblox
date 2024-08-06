@@ -8,7 +8,7 @@ local screenCenter = camera.ViewportSize / 2;
 local secondThread = localPlayer.PlayerScripts.SecondThread.SecondThread;
 local tracerCalc = rawget(getsenv(secondThread), "TracerCalc");
 
-local fovRadius = tonumber(...);
+local fovRadius = ...;
 local closestHead;
 
 setmetatable(debug.getupvalue(tracerCalc, 1), {

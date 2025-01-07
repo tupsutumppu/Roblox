@@ -19,7 +19,7 @@ local character_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/
 local esp_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/esp_module.luau"))(character_module);
 local combat_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/combat_module.luau"))(signal_module, character_module);
 
-esp:init(character_module);
+esp_module:init(character_module);
 
 local linoria = loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/linoria.luau"))();
 local theme_manager = loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/theme_manager.luau"))();

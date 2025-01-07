@@ -27,7 +27,10 @@ function character_wrapper:on_destroy(func)
 end
 
 function character_wrapper:is_friendly()
-    return self.char.team == local_player.team.Name;
+    if local_player.team then
+        self.char.team == local_player.team.Name;
+    end
+    return false;
 end
 
 function character_wrapper:get_primary_cf()

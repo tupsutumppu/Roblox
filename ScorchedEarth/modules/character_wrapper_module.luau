@@ -28,7 +28,7 @@ end
 
 function character_wrapper:is_friendly()
     if local_player.team then
-        self.char.team == local_player.team.Name;
+        return self.char.team == local_player.team.Name;
     end
     return false;
 end

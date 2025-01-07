@@ -4,13 +4,13 @@ local subscribe;
 local fire;
 
 for k, v in getgc(true) do
-    if type(v) == "table" and type(rawget(v, "forgetAndFire")) == "function" then
-		    new       = rawget(v, "new");
+	if type(v) == "table" and type(rawget(v, "forgetAndFire")) == "function" then
+		new       = rawget(v, "new");
         invoke    = rawget(v, "invoke");
         subscribe = rawget(v, "subscribe");
         fire      = rawget(v, "fire");
-		    break;
-	  end
+		break;
+	end
 end
 
 local signal_cache = debug.getupvalue(invoke, 2);

@@ -8,24 +8,24 @@ local PLAYERS = cloneref(game:GetService"Players");
 local local_player = cloneref(PLAYERS.LocalPlayer);
 
 local repo = "https://raw.githubusercontent.com/tupsutumppu/Roblox/main/";
-local network_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/network_module.luau"))(), rconsoleerr"Failed to hook network module!");
-local signal_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/signal_module.luau"))(), rconsoleerr"Failed to hook signals module!");
 
-if not (signal_module and network_module) then
-    local_player:Kick"Failed to load script!";
-end
+local success, network_module = pcall(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/network_module.luau")));
+if not success then local_player:Kick"Failed to hook network module!" end;
 
-local character_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/character_module.luau"))(), rconsoleerr"Failed to load character_module!");
-local esp_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/esp_module.luau"))(), rconsoleerr"Failed to load esp_module!");
-local combat_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/combat_module.luau"))(), rconsoleerr"Failed to load combat_module!");
+local success, signal_module = pcall(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/signal_module.luau")));
+if not success then local_player:Kick"Failed to hook signals module!" end;
+
+local character_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/character_module.luau"))(signal_module);
+local esp_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/esp_module.luau"))(character_module);
+local combat_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/combat_module.luau"))(signal_module, character_module);
 
 esp:init(character_module);
 
-local linoria = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/linoria.luau"))(), rconsoleerr"Failed to load UI!");
-local theme_manager = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/theme_manager.luau"))(), rconsoleerr"Failed to load UI!");
+local linoria = loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/linoria.luau"))();
+local theme_manager = loadstring(game:HttpGet(repo .. "ScorchedEarth/ui/theme_manager.luau"))();
 
 local window = linoria:CreateWindow{
-    Title = tostring(game:GetService"MarketplaceService":GetProductInfo(game.PlaceId).Name) .. " |" .. " #tupsutumppu";
+    Title = game:GetService"MarketplaceService":GetProductInfo(game.PlaceId).Name .. " | #tupsutumppu";
     Center = true;
     AutoShow = true;
     TabPadding = 8;

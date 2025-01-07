@@ -1,5 +1,5 @@
 rconsolecreate();
-rconsolesettitle"Scroched Earth | #tupsutumppu";
+rconsolesettitle"Scorched | #tupsutumppu";
 rconsoleclear();
 
 rconsoleinfo"Initializing...";

@@ -16,7 +16,7 @@ local success, signal_module = pcall(loadstring(game:HttpGet(repo .. "ScorchedEa
 if not success then local_player:Kick"Failed to hook signals module!" end;
 
 local character_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/character_module.luau"))(signal_module);
-local esp_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/esp_module.luau"))(character_module);
+local esp_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/esp_module.luau"))();
 local combat_module = loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/combat_module.luau"))(signal_module, character_module);
 
 esp_module:init(character_module);

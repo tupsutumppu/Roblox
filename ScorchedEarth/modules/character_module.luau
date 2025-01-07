@@ -3,7 +3,7 @@ local CHAR_DESPAWNED_SUB_CODE = "938";
 
 local local_player = cloneref(game:GetService"Players".LocalPlayer);
 
-local character_wrapper = assert(loadstring(game:HttpGet"https://raw.githubusercontent.com/tupsutumppu/Roblox/main/ScorchedEarth/modules/character_wrapper_module.luau")(), "Failed to load character_wrapper!");
+local character_wrapper = loadstring(game:HttpGet"https://raw.githubusercontent.com/tupsutumppu/Roblox/main/ScorchedEarth/modules/character_wrapper_module.luau")();
 local signal_module = ...;
 
 local character_module = {};

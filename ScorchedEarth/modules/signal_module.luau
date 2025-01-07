@@ -52,7 +52,7 @@ function signal_module:safe_new(signal_name)
 end
 
 function signal_module:safe_subscribe(signal_name, callback, index)
-    local signal = signal_cache[signal_name] or self:new(signal_name);
+    local signal = signal_cache[signal_name] or self:safe_new(signal_name);
 
     if index then
         table.insert(signal, index, callback);

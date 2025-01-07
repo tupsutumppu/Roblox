@@ -7,7 +7,7 @@ rconsoleinfo"Initializing...";
 local PLAYERS = cloneref(game:GetService"Players");
 local local_player = cloneref(PLAYERS.LocalPlayer);
 
-local repo = "https://raw.githubusercontent.com/tupsutumppu/Roblox/main";
+local repo = "https://raw.githubusercontent.com/tupsutumppu/Roblox/main/";
 local network_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/network_module.luau"))(), rconsoleerr"Failed to hook network module!");
 local signal_module = assert(loadstring(game:HttpGet(repo .. "ScorchedEarth/modules/signal_module.luau"))(), rconsoleerr"Failed to hook signals module!");
 

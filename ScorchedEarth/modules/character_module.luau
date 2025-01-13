@@ -1,5 +1,5 @@
-local CHAR_SPAWNED_SUB_CODE = "969";
-local CHAR_DESPAWNED_SUB_CODE = "938";
+local CHAR_SPAWNED_SUB_CODE = "465";
+local CHAR_DESPAWNED_SUB_CODE = "434";
 
 local local_player = cloneref(game:GetService"Players".LocalPlayer);
 
